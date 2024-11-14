@@ -32,7 +32,7 @@ jobs:
 
       - name: Update and install feeds
         run: |
-          sed -i '$a src-git luci-app-easymesh https://github.com/shuishihan/luci-app-easymesh.git' feeds.conf.default
+          sed -i '$a src-git luci-app-easymesh https://github.com/shuishihan/luci-app-easymesh.git;master' feeds.conf.default
           echo '---------- feeds.conf.default ----------'
           cat feeds.conf.default
           echo -e '\n\n'
