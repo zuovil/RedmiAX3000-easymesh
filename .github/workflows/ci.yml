@@ -34,6 +34,7 @@ jobs:
         run: |
           ./scripts/feeds update -a
           ./scripts/feeds install -a
+          git clone  https://github.com/shuishihan/luci-app-easymesh.git package/feeds/luci/luci-app-easymesh
 
       - name: Configure
         run: |
@@ -53,6 +54,7 @@ jobs:
             CONFIG_REPRODUCIBLE_DEBUG_INFO=y
 
             CONFIG_PACKAGE_luci=y
+            CONFIG_PACKAGE_luci-app-easymesh=y
           EOF
           make defconfig
 
