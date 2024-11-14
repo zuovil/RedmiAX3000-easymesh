@@ -34,7 +34,7 @@ jobs:
         run: |
           sed -i '$a src-git luci-app-easymesh https://github.com/shuishihan/luci-app-easymesh.git;master' feeds.conf.default
           echo '---------- feeds.conf.default ----------'
-          cat feeds.conf.default
+          echo "$(<feeds.conf.default)"
           echo -e '\n\n'
           ./scripts/feeds update -a
           ./scripts/feeds install -a
@@ -61,10 +61,10 @@ jobs:
           EOF
           make defconfig
           echo '---------- config ----------'
-          cat .config
+          echo "$(<.config)"
           echo -e '\n\n'
           echo '---------- feeds.conf.default ----------'
-          cat feeds.conf.default
+          echo "$(<feeds.conf.default)"
           echo -e '\n\n'
 
       - name: Download
