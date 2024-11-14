@@ -34,7 +34,7 @@ jobs:
         run: |
           ./scripts/feeds update -a
           ./scripts/feeds install -a
-          git clone  https://github.com/shuishihan/luci-app-easymesh.git ./feeds/luci/applications/luci-app-easymesh
+          sed -i '$a src-git luci-app-easymesh https://github.com/shuishihan/luci-app-easymesh.git' ./feeds.conf.default
 
       - name: Configure
         run: |
