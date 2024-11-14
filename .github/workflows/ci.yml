@@ -32,9 +32,9 @@ jobs:
 
       - name: Update and install feeds
         run: |
+          sed -i '$a src-git luci-app-easymesh https://github.com/shuishihan/luci-app-easymesh' ./feeds.conf.default
           ./scripts/feeds update -a
           ./scripts/feeds install -a
-          sed -i '$a src-git luci-app-easymesh https://github.com/shuishihan/luci-app-easymesh.git' ./feeds.conf.default
 
       - name: Configure
         run: |
@@ -57,6 +57,12 @@ jobs:
             CONFIG_PACKAGE_luci-app-easymesh=y
           EOF
           make defconfig
+          echo '---------- config ----------'
+          cat .config
+          echo -e '\n\n'
+          echo '---------- feeds.conf.default ----------'
+          cat feeds.conf.default
+          echo -e '\n\n'
 
       - name: Download
         run: |
