@@ -32,10 +32,6 @@ jobs:
 
       - name: Update and install feeds
         run: |
-          sed -i '$a src-git luci-app-easymesh https://github.com/shuishihan/luci-app-easymesh.git;master' feeds.conf.default
-          echo '---------- feeds.conf.default ----------'
-          echo "$(<feeds.conf.default)"
-          echo -e '\n\n'
           ./scripts/feeds update -a
           ./scripts/feeds install -a
 
