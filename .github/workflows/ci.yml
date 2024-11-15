@@ -78,12 +78,13 @@ jobs:
       - name: Build all
         run: |
           make -j$(nproc) IGNORE_ERRORS=1
+          make package/luci-app-easymesh/compile V=99
 
       - name: Upload bin to artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: bin-ipq50xx-arm
-          path: bin/targets/*/*
+          name: bin
+          path: bin/*
 
       - name: Upload dl to artifacts
         uses: actions/upload-artifact@v3
@@ -111,12 +112,12 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: bin-ipq50xx-arm
-          path: bin/targets/*/*
+          path: bin/
 
       - name: Tar
         run: |
           tar cvf dl.tar -C dl/ .
-          tar cvf bin.tar -C bin/targets/*/* .
+          tar cvf bin.tar -C bin/ .
 
       - name: Generate release informations
         run: |
@@ -153,5 +154,5 @@ jobs:
           body_path: Body.md
           files: |
             bin/targets/ipq50xx/arm/sha256sums
-            bin/targets/*/*/*.*
+            bin/
             *.tar
