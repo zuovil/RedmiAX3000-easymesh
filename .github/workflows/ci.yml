@@ -38,8 +38,8 @@ jobs:
       - name: Configure
         run: |
           cat <<EOF | sed -E 's/^  //' >.config
-            CONFIG_VERSION_NUMBER="18.06.9"
-            CONFIG_VERSION_REPO="https://downloads.openwrt.org/releases/18.06.9"
+            CONFIG_VERSION_NUMBER="18.06-SNAPSHOT"
+            CONFIG_VERSION_REPO="https://downloads.immortalwrt.org/releases/18.06-SNAPSHOT"
             CONFIG_TARGET_ipq50xx=y
             CONFIG_TARGET_ipq50xx_arm=y
             CONFIG_TARGET_MULTI_PROFILE=y
